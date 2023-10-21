@@ -27,6 +27,14 @@ jobs:
       with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+    - name: Install dependencies
+      run: |
+          cd repo/web
+          npm install
+    - name: Build web
+      run: |
+          cd repo/web
+          npm run build
           
     - name: Build and push
       id: docker_build

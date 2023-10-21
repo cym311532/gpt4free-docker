@@ -1,6 +1,7 @@
 name: Build and Push ARM Docker Image
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '19 7 * * *'  # 定时每小时运行一次
 

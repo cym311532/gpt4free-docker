@@ -22,9 +22,12 @@ jobs:
     - name: Clone repository
       run: git clone https://github.com/xiangsx/gpt4free-ts.git repo
 
-    - name: Login to Docker Hub
-      run: echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
-
+    - name: Login to DockerHub
+      uses: docker/login-action@v2
+      with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          
     - name: Build and push
       id: docker_build
       uses: docker/build-push-action@v2
